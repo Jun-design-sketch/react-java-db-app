@@ -2,48 +2,74 @@ import { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import './Counter.css'
 
-export default function Counter({by}) {
+export default function Counter(){
 
-  // array [0, f]
-  // declaration of state makes array
+  const [count, setCount] = useState(0);
+
+  function incrementCounterParentFunction(by){
+    setCount(count + by)
+  }
+
+  function decrementCounterParentFunction(by){
+    setCount(count - by)
+  }
+
+  function someMethodInParent(){
+    console.log('parent method called')
+  }
+
+  return(
+    <>
+      <span className="totalCount">{count}</span>
+      <CounterButton by={1}
+        incrementMethod={incrementCounterParentFunction}
+        decrementMethod={decrementCounterParentFunction}/>
+      <CounterButton by={2}
+        incrementMethod={incrementCounterParentFunction}
+        decrementMethod={decrementCounterParentFunction}/>
+      <CounterButton by={5}
+        incrementMethod={incrementCounterParentFunction}
+        decrementMethod={decrementCounterParentFunction}/>
+    </>
+  )
+}
+
+function CounterButton({by, incrementMethod, decrementMethod}) {
+
   // [value, function]
-  // to use easiest way, use array left side
-  // for example
   // const array = [1, 2]
   // const [firstElt, secondElt] = array
   const [count, setCount] = useState(0);
 
-  console.log(by)
-
-  function incrementCounterFunction() {
-
+  function incrementCounterButtonFunction() {
     setCount(count + by);
+    incrementMethod(by);
   }
 
-  function decresementCounterFunction(){
-
+  function decresementCounterButtonFunction(){
     setCount(count - by);
+    decrementMethod(by);
   }
 
   return (
-    <div className="Counter">
-      <span className="count">{count}</span>
+    <div className="CounterButton">
       <div>
         <button className="counterButton"
-                onClick={incrementCounterFunction}
+                onClick={incrementCounterButtonFunction}
         >+{by}</button>
         <button className="counterButton"
-                onClick={decresementCounterFunction}
+                onClick={decresementCounterButtonFunction}
         >-{by}</button>
       </div>
     </div>
   )
+
 }
 
-Counter.propTypes = {
+CounterButton.propTypes = {
   by: PropTypes.number
 }
 
-Counter.defaultProps = {
+CounterButton.defaultProps = {
   by: 1
 }

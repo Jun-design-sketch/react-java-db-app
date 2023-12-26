@@ -1,5 +1,4 @@
 import './App.css';
-import CounterButton from './components/counter/Counter'
 import Counter from './components/counter/Counter'
 
 function App() {

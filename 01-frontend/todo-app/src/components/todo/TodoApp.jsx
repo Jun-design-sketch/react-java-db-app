@@ -26,6 +26,6 @@ export default function TodoApp() {
           <FooterComponent />
         </BrowserRouter>
       </AuthProvider>
-`    </div>
+    </div>
   )
 }

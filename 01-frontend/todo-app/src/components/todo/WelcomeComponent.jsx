@@ -8,13 +8,13 @@ export default function WelcomeComponent() {
 
   const[message, setMessage] = useState(null)
 
-  function callHelloWorldRestApi(){
+  function callHelloWorldRestApi(specificUrl, username){
     // from localhost:8080 to localhost:3000
     // Cross Origin Requests (CORs)
     // By default, CORs Requests fail (blocked)
     // need allow requests only from localhost:8080
     console.log("called")
-    retrieveHelloWorldBean()
+    retrieveHelloWorldBean(specificUrl, username)
           .then((response) => successfulResponse(response))
           .catch((error) => errorResponse(error))
           .finally(() => console.log('cleanup'))
@@ -25,7 +25,7 @@ export default function WelcomeComponent() {
   }
 
   function errorResponse(error){
-    setMessage("uhhh...")
+    setMessage("there are some troubles...")
   }
 
   return (
@@ -35,7 +35,11 @@ export default function WelcomeComponent() {
         Manage your todos - <Link to="/todos">Go here</Link>
       </div>
       <div>
-      <button className="btn btn-success m-5" onClick={callHelloWorldRestApi}>CallHelloWorldApi</button>
+        <br></br>
+        <h2>Practice API a little</h2>
+        <button className="btn btn-success m-5" onClick={() => callHelloWorldRestApi('hello-world')}>Api</button>
+        <button className="btn btn-success m-5" onClick={() => callHelloWorldRestApi('hello-world-bean')}>BeanApi</button>
+        <button className="btn btn-success m-5" onClick={() => callHelloWorldRestApi('hello-world/path-variable', username)}>ParamApi</button>
       </div>
       <div className="text-info">{JSON.stringify(message)}</div>
     </div>

@@ -1,7 +1,19 @@
 import axios from 'axios'
 
-export function retrieveHelloWorldBean(){
-  return axios.get('http://localhost:8080/hello-world-bean', {headers: { 'Authorization': 'Basic dXNlcm5hbWU6cGFzc3dvcmQ=' }})
+const apiClient = axios.create(
+  {
+    baseURL: 'http://localhost:8080'
+  }
+)
+
+export function retrieveHelloWorldBean(specificUrl, username){
+  if(!username){
+    return apiClient.get(`/${specificUrl}`,
+                    {headers: { 'Authorization': 'Basic dXNlcm5hbWU6cGFzc3dvcmQ=' }})
+  }else{
+    return apiClient.get(`/${specificUrl}/${username}`,
+                    {headers: { 'Authorization': 'Basic dXNlcm5hbWU6cGFzc3dvcmQ=' }})
+  }
 }
 
 // another way to write

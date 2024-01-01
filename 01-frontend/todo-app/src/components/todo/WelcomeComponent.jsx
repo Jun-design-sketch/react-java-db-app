@@ -20,6 +20,14 @@ export default function WelcomeComponent() {
           .finally(() => console.log('cleanup'))
   }
 
+  function callHelloWorldBeanRestApi(){
+    console.log("called bean")
+    axios.get('http://localhost:8080/hello-world-bean', {headers: { 'Authorization': 'Basic dXNlcm5hbWU6cGFzc3dvcmQ=' }})
+    .then((response) => successfulResponse(response))
+    .catch((error) => errorResponse(error))
+    .finally(() => console.log('cleanup'))
+  }
+
   function successfulResponse(response){
     setMessage(response.data)
   }
@@ -35,9 +43,10 @@ export default function WelcomeComponent() {
         Manage your todos - <Link to="/todos">Go here</Link>
       </div>
       <div>
-        <button className="btn btn-success m-5" onClick={callHelloWorldRestApi}>Call Hello World</button>
+        <button className="btn btn-success m-5" onClick={callHelloWorldRestApi}>Call HelloWorld</button>
+        <button className="btn btn-success m-5" onClick={callHelloWorldBeanRestApi}>Call HelloWorldBean</button>
       </div>
-      <div className="text-info">{message}</div>
+      <div className="text-info">{JSON.stringify(message)}</div>
     </div>
   )
 }

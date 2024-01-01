@@ -7,10 +7,14 @@ export default function WelcomeComponent() {
 
   function callHelloWorldRestApi(){
     console.log("called")
-    axios.get('http://localhost:8080/hello-world')
+    axios.get('http://localhost:8080/hello-world', {headers: { 'Authorization': 'Basic dXNlcm5hbWU6cGFzc3dvcmQ=' }})
           .then((response) => successfulResponse(response))
           .catch((error) => errorResponse(error))
           .finally(() => console.log('cleanup'))
+          // from localhost:8080 to localhost:3000
+          // Cross Origin Requests (CORs)
+          // By default, CORs Requests fail (blocked)
+          // need allow requests only from localhost:8080
   }
 
   function successfulResponse(response){

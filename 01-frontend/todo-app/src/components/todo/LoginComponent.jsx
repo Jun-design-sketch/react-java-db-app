@@ -19,8 +19,8 @@ export default function LoginComponent() {
     setPassword(event.target.value)
   }
 
-  function handelSubmit(event){
-    if(authContext.login(username, password)){
+  async function handelSubmit(event){
+    if(await authContext.login(username, password)){
       navigate(`/welcome/${username}`)
     }else{
       setShowErrorMessage(true)

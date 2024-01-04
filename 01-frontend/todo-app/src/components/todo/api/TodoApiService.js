@@ -17,3 +17,6 @@ export const deleteTodoApi
 
 export const updateTodoApi
   = (username, id, todo) => apiClient.put(`/users/${username}/todos/${id}`, todo, {headers: { 'Authorization': 'Basic dXNlcm5hbWU6cGFzc3dvcmQ=', 'Content-Type': 'application/json' }})
+
+export const createTodoApi
+  = (username, todo) => apiClient.post(`/users/${username}/todos`, todo, {headers: { 'Authorization': 'Basic dXNlcm5hbWU6cGFzc3dvcmQ=', 'Content-Type': 'application/json' }})

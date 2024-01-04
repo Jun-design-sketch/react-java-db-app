@@ -20,6 +20,18 @@ public class TodoService {
 				LocalDate.now().plusYears(11), false ));
 		todos.add(new Todo(++todosCount, "in28minutes","Learn Full Stack Development", 
 				LocalDate.now().plusYears(12), false ));
+		todos.add(new Todo(++todosCount, "username","Get AWS Certified", 
+				LocalDate.now().plusYears(10), false ));
+		todos.add(new Todo(++todosCount, "username","Learn DevOps", 
+				LocalDate.now().plusYears(11), false ));
+		todos.add(new Todo(++todosCount, "username","Learn Full Stack Development", 
+				LocalDate.now().plusYears(12), false ));
+		todos.add(new Todo(++todosCount, "username","Get AWS Certified 2", 
+				LocalDate.now().plusYears(10), false ));
+		todos.add(new Todo(++todosCount, "username","Learn DevOps 2", 
+				LocalDate.now().plusYears(11), false ));
+		todos.add(new Todo(++todosCount, "username","Learn Full Stack Development 2", 
+				LocalDate.now().plusYears(12), false ));
 	}
 	
 	public List<Todo> findByUsername(String username){

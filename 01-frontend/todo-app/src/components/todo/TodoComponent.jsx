@@ -19,7 +19,7 @@ export default function TodoComponent(){
   )
 
   function retrieveTodos(){
-    if(id != -1){
+    if(id !== -1){
       retrieveTodoApi(username, id)
       .then(response => {
         setDescription(response.data.description)
@@ -56,7 +56,7 @@ export default function TodoComponent(){
       errors.description = 'Enter at least 5 characters'
     }
 
-    if(values.targetDate == null || values.targetDate == ''){
+    if(values.targetDate === null || values.targetDate === ''){
       errors.targetDate = 'Enter a target date'
     }
 

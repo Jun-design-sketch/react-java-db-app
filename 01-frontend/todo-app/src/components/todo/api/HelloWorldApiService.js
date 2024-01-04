@@ -1,18 +1,10 @@
-import axios from 'axios'
-
-const apiClient = axios.create(
-  {
-    baseURL: 'http://localhost:8080'
-  }
-)
+import { apiClient } from './ApiClient'
 
 export function retrieveHelloWorldBean(specificUrl, username, token){
   if(!username){
-    return apiClient.get(`/${specificUrl}`,
-                    {headers: { 'Authorization': token }})
+    return apiClient.get(`/${specificUrl}`)
   }else{
-    return apiClient.get(`/${specificUrl}/${username}`,
-                    {headers: { 'Authorization': token }})
+    return apiClient.get(`/${specificUrl}/${username}`)
   }
 }
 

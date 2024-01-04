@@ -19,6 +19,12 @@ public class HelloWorldController {
 	// give a specific url: /hello-world
 	
 	// return "Hello World"
+	@GetMapping(path = "/basicauth")
+	public String basicAuthCheck() {
+		return "Success";
+	}
+	
+	// return "Hello World"
 	@GetMapping(path = "/hello-world")
 	public String helloWorld() {
 		return "Hello World";

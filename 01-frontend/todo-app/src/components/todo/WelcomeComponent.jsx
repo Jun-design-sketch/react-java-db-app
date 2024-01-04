@@ -1,11 +1,11 @@
 import { useParams, Link } from 'react-router-dom'
 import { useState } from 'react'
 import { retrieveHelloWorldBean } from './api/HelloWorldApiService'
+import { useAuth } from './security/AuthContext'
 
 export default function WelcomeComponent() {
-
   const { username } = useParams()
-
+  const authContext = useAuth()
   const[message, setMessage] = useState(null)
 
   function callHelloWorldRestApi(specificUrl, username){
@@ -14,7 +14,7 @@ export default function WelcomeComponent() {
     // By default, CORs Requests fail (blocked)
     // need allow requests only from localhost:8080
     console.log("called")
-    retrieveHelloWorldBean(specificUrl, username)
+    retrieveHelloWorldBean(specificUrl, username, authContext.token)
           .then((response) => successfulResponse(response))
           .catch((error) => errorResponse(error))
           .finally(() => console.log('cleanup'))

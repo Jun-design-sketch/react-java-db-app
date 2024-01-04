@@ -6,13 +6,13 @@ const apiClient = axios.create(
   }
 )
 
-export function retrieveHelloWorldBean(specificUrl, username){
+export function retrieveHelloWorldBean(specificUrl, username, token){
   if(!username){
     return apiClient.get(`/${specificUrl}`,
-                    {headers: { 'Authorization': 'Basic dXNlcm5hbWU6cGFzc3dvcmQ=' }})
+                    {headers: { 'Authorization': token }})
   }else{
     return apiClient.get(`/${specificUrl}/${username}`,
-                    {headers: { 'Authorization': 'Basic dXNlcm5hbWU6cGFzc3dvcmQ=' }})
+                    {headers: { 'Authorization': token }})
   }
 }
 

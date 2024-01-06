@@ -8,11 +8,6 @@ export function retrieveHelloWorldBean(specificUrl, username, token){
   }
 }
 
-export function executeBasicAuthenticationService(specificUrl, token){
-    return apiClient.get(`/${specificUrl}`,
-                    {headers: { 'Authorization': token }})
-}
-
 // another way to write
 // export const retrieveHelloWorldBean =
 // () => axios.get('http://localhost:8080/hello-world-bean', {headers: { 'Authorization': 'Basic dXNlcm5hbWU6cGFzc3dvcmQ=' }})
